@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         title = "TASKS"
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
     }
@@ -84,6 +85,14 @@ extension ViewController: UITableViewDataSource {
         cell.textLabel?.text = task.value(forKey: "task") as? String
         
         return cell
+    }
+}
+
+// cell selection
+extension ViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
